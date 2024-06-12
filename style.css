@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+.case  {
+    border: 2px solid black;
+    width: 300px;
+    height: 450px;
+    right: 50%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    }
+
+.display {
+    border: 2px solid black;
+    margin: 10px;
+    height: 60px;
+    }
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+
+}
+
+button {
+    margin: 10px;
+    height: 45px;
+    width: 45px;
+}
+
+#zero {
+    color: pink;
+    width: 110px
+}
+
+#equal {
+    height: 110px;
+}
+
+.lower {
+    display: flex
+}
+
+.lower-left {
+    display: flex;
+    flex-wrap: wrap;
+}
