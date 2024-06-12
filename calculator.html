@@ -9,9 +9,43 @@
 
 </head>
 <body>
+   
+   <div class="case">
+        <div class="display">my display</div>
+        <div class="buttons">
+            <button class="numb" id="1">1</button>
+            <button class="numb" id="2">2</button>
+            <button class="numb" id="3">3</button>
+            <button class="numb" id="4">4</button>
+            <button class="numb" id="5">5</button>
+            <button class="numb" id="6">6</button>
+            <button class="numb" id="7">7</button>
+            <button class="numb" id="8">8</button>
+            <button class="numb" id="9">9</button>
+            <button class="numb" id="0">0</button>
+
+            <button class="operator" id="add">+</button>
+            <button class="operator" id="subtract">-</button>
+            <button class="operator" id="multiply">*</button>
+            <button class="operator" id="divide">/</button>
+
+            <button id="equal">=</button>
+            <button id="delete">delete</button>
+            <button id="clear">clear</button>
+            <button id="float">.</button>
+        </div>
+
+   </div>
+   
+   
    <script>
+
+
+       let firstNumb;
+       let secundNumb;
+       let operator;
         
-        function add (a, b) {
+       function add (a, b) {
             return a + b;
         }
         function subtract (a, b) {
@@ -23,9 +57,6 @@
         function divide (a, b) {
             return a / b;
         }
-        // let firstNumb
-        // let secundNumb
-        // let operator
 
         function operate(firstNumb, secundNumb, operator) {
             switch (operator) {
