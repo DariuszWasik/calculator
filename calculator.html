@@ -9,7 +9,51 @@
 
 </head>
 <body>
-   
+   <script>
+        
+        function add (a, b) {
+            return a + b;
+        }
+        function subtract (a, b) {
+            return a - b;
+        }
+        function multiply (a, b) {
+            return a * b;
+        }
+        function divide (a, b) {
+            return a / b;
+        }
+        // let firstNumb
+        // let secundNumb
+        // let operator
+
+        function operate(firstNumb, secundNumb, operator) {
+            switch (operator) {
+                case '+' :
+                    return add(firstNumb, secundNumb);
+                    break;
+                case '-' :
+                    return subtract(firstNumb, secundNumb);
+                    break;
+                case '*' :
+                    return multiply(firstNumb, secundNumb);
+                    break;
+                case '/' :
+                    return divide(firstNumb, secundNumb);
+                    break;
+                default:
+                    console.log("Something wrong!");
+            }
+        }
+
+        
+        console.log(operate(6, 2, '+'));
+        console.log(operate(6, 2, '-'));
+        console.log(operate(6, 2, '*'));
+        console.log(operate(6, 2, '/'));
+    
+
+   </script>
     
 </body>
 </html>
