@@ -13,7 +13,7 @@
    <div class="case">
         <div class="display">
             <p class="upperDisplay">8+8</p>
-            <p class="lowerDisplay">78888</p>
+            <p class="lowerDisplay"></p>
         </div>
         <div class="buttons">
             <!-- <div class="upper"> -->
@@ -21,80 +21,26 @@
                 <button id="change">+/-</button>
                 <button id="delete">delete</button>
                 <button class="operator" id="divide">/</button>
-                <button class="numb" id="7">7</button>
-                <button class="numb" id="8">8</button>
-                <button class="numb" id="9">9</button>
+                <button class="numb" id="seven">7</button>
+                <button class="numb" id="eight">8</button>
+                <button class="numb" id="nine">9</button>
                 <button class="operator" id="multiply">*</button>
-                <button class="numb" id="4">4</button>
-                <button class="numb" id="5">5</button>
-                <button class="numb" id="6">6</button>
+                <button class="numb" id="four">4</button>
+                <button class="numb" id="five">5</button>
+                <button class="numb" id="six">6</button>
                 <button class="operator" id="subtract">-</button>
-                <!-- </div> -->
-                <!-- <div class="lower"> -->
-                    <!-- <div class="lower-left"> -->
-                        <button class="numb" id="1">1</button>
-                        <button class="numb" id="2">2</button>
-                        <button class="numb" id="3">3</button>
-                        <button class="operator" id="add">+</button>
-                        <button class="numb" id="zero">0</button>
-                        <button id="float">.</button>
-                        <button class="operator" id="equal">=</button>
-                    <!-- </div> -->
-                    <!-- <div class="lower-right">       -->
-                    <!-- </div> -->
-            <!-- </div>     -->
+                <button class="numb" id="one">1</button>
+                <button class="numb" id="two">2</button>
+                <button class="numb" id="three">3</button>
+                <button class="operator" id="add">+</button>
+                <button class="numb" id="zero">0</button>
+                <button id="float">.</button>
+                <button class="operator" id="equal">=</button>
+               
         </div>
 
    </div>
    
-   
-   <script>
-
-
-       let firstNumb;
-       let secundNumb;
-       let operator;
-        
-       function add (a, b) {
-            return a + b;
-        }
-        function subtract (a, b) {
-            return a - b;
-        }
-        function multiply (a, b) {
-            return a * b;
-        }
-        function divide (a, b) {
-            return a / b;
-        }
-
-        function operate(firstNumb, secundNumb, operator) {
-            switch (operator) {
-                case '+' :
-                    return add(firstNumb, secundNumb);
-                    break;
-                case '-' :
-                    return subtract(firstNumb, secundNumb);
-                    break;
-                case '*' :
-                    return multiply(firstNumb, secundNumb);
-                    break;
-                case '/' :
-                    return divide(firstNumb, secundNumb);
-                    break;
-                default:
-                    console.log("Something wrong!");
-            }
-        }
-
-        
-        console.log(operate(6, 2, '+'));
-        console.log(operate(6, 2, '-'));
-        console.log(operate(6, 2, '*'));
-        console.log(operate(6, 2, '/'));
-    
-
-   </script>
     
 </body>
 </html>
