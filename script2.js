@@ -64,7 +64,7 @@ plus.addEventListener("click", (e) => {
         console.log(firstNumb, operator, secundNumb)
         
         value = operate(firstNumb, secundNumb, operator);
-        paraLow.textContent = value;
+        updateDisplay();
         firstNumb = value;
         operator = '+';
         value = 0;   
@@ -82,7 +82,7 @@ minus.addEventListener("click", (e) => {
         console.log(firstNumb, operator, secundNumb)
         
         value = operate(firstNumb, secundNumb, operator);
-        paraLow.textContent = value;
+        updateDisplay();
         firstNumb = value;
         operator = '-';
         value = 0;   
@@ -100,7 +100,7 @@ multiplyBtn.addEventListener("click", (e) => {
         console.log(firstNumb, operator, secundNumb)
         
         value = operate(firstNumb, secundNumb, operator);
-        paraLow.textContent = value;
+        updateDisplay();
         firstNumb = value;
         operator = '*';
         value = 0;   
@@ -118,7 +118,7 @@ divideBtn.addEventListener("click", (e) => {
         console.log(firstNumb, operator, secundNumb)
         
         value = operate(firstNumb, secundNumb, operator);
-        paraLow.textContent = value;
+        updateDisplay();
         firstNumb = value;
         operator = '/';
         value = 0;   
@@ -133,7 +133,7 @@ divideBtn.addEventListener("click", (e) => {
 equal.addEventListener('click', (e) => {
     secundNumb = parseInt(value);
     value = operate(firstNumb, secundNumb, operator);
-    paraLow.textContent = value;
+    updateDisplay();
     firstNumb = parseInt(value);
     value = 0;
 })
