@@ -10,12 +10,12 @@ body {
 .case  {
     border: 2px solid black;
     width: 265px;
-    height: 420px;
+    height: 430px;
     right: 50%;
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: silver;
+    background-color: pink;
     padding-left: 10px; 
     padding-right: 10px;
     border-radius: 10px;
@@ -41,7 +41,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    }
+    margin-bottom: 10px;
+}
     
     button {
         /* margin: 10px; */
@@ -49,7 +50,7 @@ body {
         width: 50px;
         margin: 5px;
         border-radius: 10px;
-        background-color: rgb(109, 92, 126);
+        background-color: rgb(145, 127, 163);
 }
 
 
