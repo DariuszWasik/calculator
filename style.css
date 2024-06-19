@@ -3,24 +3,27 @@
 }
 
 body {
-    display: flex;
-    /* align-items: center; */
+    /* display: flex;
+    justify-content: center;    
+    align-items: center; */
+    background-color: rgb(149, 115, 180);
 }
 
 .case  {
+    
     border: 2px solid black;
     width: 265px;
     height: 430px;
     right: 50%;
-    position: fixed;
     display: flex;
     flex-direction: column;
     background-color: pink;
     padding-left: 10px; 
     padding-right: 10px;
     border-radius: 10px;
-
-    
+    /* position: fixed; */
+    margin-top: 25px;
+    margin-left: 25px; 
     }
     
 .display {

@@ -55,22 +55,30 @@ numb.forEach((num) => {
 });
 
 function updateDisplay() {
-    paraLow.textContent = parseInt(value);
-}
+     
+    let stringValue = parseFloat(value).toString();
+    let decimalIndex = stringValue.indexOf(".");
+    let length = stringValue.slice(decimalIndex).length;
+    if(length > 9){
+        paraLow.textContent = parseFloat(stringValue).toFixed(3);
+    }
+    else {
+    paraLow.textContent = parseFloat(value);
+}}
 
 plus.addEventListener("click", (e) => {
     if(operator !== undefined) {
-        secundNumb = parseInt(value);
+        secundNumb = parseFloat(value);
         console.log(firstNumb, operator, secundNumb)
         
         value = operate(firstNumb, secundNumb, operator);
-        paraLow.textContent = value;
+        updateDisplay();
         firstNumb = value;
         operator = '+';
         value = 0;   
     }    
     else {
-        firstNumb = parseInt(value);
+        firstNumb = parseFloat(value);
         operator = '+';
         value = 0;
     }
@@ -78,17 +86,17 @@ plus.addEventListener("click", (e) => {
 
 minus.addEventListener("click", (e) => {
     if(operator !== undefined) {
-        secundNumb = parseInt(value);
+        secundNumb = parseFloat(value);
         console.log(firstNumb, operator, secundNumb)
         
         value = operate(firstNumb, secundNumb, operator);
-        paraLow.textContent = value;
+        updateDisplay();
         firstNumb = value;
         operator = '-';
         value = 0;   
     }    
     else {
-        firstNumb = parseInt(value);
+        firstNumb = parseFloat(value);
         operator = '-';
         value = 0;
     }
@@ -96,17 +104,17 @@ minus.addEventListener("click", (e) => {
 
 multiplyBtn.addEventListener("click", (e) => {
     if(operator !== undefined) {
-        secundNumb = parseInt(value);
+        secundNumb = parseFloat(value);
         console.log(firstNumb, operator, secundNumb)
         
         value = operate(firstNumb, secundNumb, operator);
-        paraLow.textContent = value;
+        updateDisplay();
         firstNumb = value;
         operator = '*';
         value = 0;   
     }    
     else {
-        firstNumb = parseInt(value);
+        firstNumb = parseFloat(value);
         operator = '*';
         value = 0;
     }
@@ -114,28 +122,28 @@ multiplyBtn.addEventListener("click", (e) => {
 
 divideBtn.addEventListener("click", (e) => {
     if(operator !== undefined) {
-        secundNumb = parseInt(value);
+        secundNumb = parseFloat(value);
         console.log(firstNumb, operator, secundNumb)
         
         value = operate(firstNumb, secundNumb, operator);
-        paraLow.textContent = value;
+        updateDisplay();
         firstNumb = value;
         operator = '/';
         value = 0;   
     }    
     else {
-        firstNumb = parseInt(value);
+        firstNumb = parseFloat(value);
         operator = '/';
         value = 0;
     }
 });
 
 equal.addEventListener('click', (e) => {
-    secundNumb = parseInt(value);
+    secundNumb = parseFloat(value);
     value = operate(firstNumb, secundNumb, operator);
-    paraLow.textContent = value;
-    firstNumb = parseInt(value);
-    value = 0;
+    updateDisplay();
+    firstNumb = parseFloat(value);
+    
 })
 
 clear.addEventListener('click', (e) => {
