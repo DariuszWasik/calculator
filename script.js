@@ -26,26 +26,27 @@ function add (a, b) {
      return a / b;
     }
     
-    function operate(firstNumb, secundNumb, operator) {
-     switch (operator) {
-         case '+' :
-             return add(firstNumb, secundNumb);
-             break;
-         case '-' :
-             return subtract(firstNumb, secundNumb);
-             break;
-         case '*' :
-             return multiply(firstNumb, secundNumb);
-             break;
-             case '/' :
-             return divide(firstNumb, secundNumb);
-             break;
-             default:
-                 console.log("Something wrong!");
-     }
- }
+function operate(firstNumb, secundNumb, operator) {
+ switch (operator) {
+    case '+' :
+        return add(firstNumb, secundNumb);
+        break;
+    case '-' :
+        return subtract(firstNumb, secundNumb);
+        break;
+    case '*' :
+        return multiply(firstNumb, secundNumb);
+        break;
+    case '/' :
+        return divide(firstNumb, secundNumb);
+        break;
+    default:
+        console.log("Something wrong!");
+            }
+        }
 
  //click button puts given number on display
+
  numb.forEach((num) => {
     document.querySelector(`#${num.id}`).addEventListener("click", (f) => {
         value += num.textContent;
@@ -54,13 +55,20 @@ function add (a, b) {
 });
 
 
+
+    
 // make all basic math button works
 
 operators.forEach((op) => {
     document.querySelector(`#${op.id}`).addEventListener("click", (f) => {
-        if(operator !== undefined) {
-            secundNumb = parseFloat(value);
-            value = operate(firstNumb, secundNumb, operator);
+        if((operator !== undefined) && (value == '')) {
+            operator = op.innerHTML;
+            return;
+        }
+            
+            if(operator !== undefined) {
+                secundNumb = parseFloat(value);
+                value = operate(firstNumb, secundNumb, operator);
             updateDisplay();
             firstNumb = value;
             operator = op.innerHTML;
@@ -76,7 +84,6 @@ operators.forEach((op) => {
 
 
 function updateDisplay() {
-    
     let stringValue = parseFloat(value).toString();
     let decimalIndex = stringValue.indexOf(".");
     let length = stringValue.slice(decimalIndex).length;
@@ -84,47 +91,119 @@ function updateDisplay() {
     if(length > 6){
         paraLow.textContent = parseFloat(stringValue).toFixed(3);
     }
-    // else if((value[0] == 0) && !(value.includes('.')))
-    //     paraLow.textContent = value.slice(1);
     else {
         paraLow.textContent = value;
-    }}
+    }
+}
     
-//other functions buttons
-
-equal.addEventListener('click', (e) => {
+    //other functions buttons
+    
+function equalFnc() {
+    if((operator !== undefined) && (value == '')) {
+        operator = "";
+    }
     if (operator !== undefined){
-    secundNumb = parseFloat(value);
-    value = operate(firstNumb, secundNumb, operator);
-    updateDisplay();
-    firstNumb = parseFloat(value);
-    operator = undefined;
+        secundNumb = parseFloat(value);
+        value = operate(firstNumb, secundNumb, operator);
+        updateDisplay();
+        firstNumb = parseFloat(value);
+        operator = undefined;
     }
     else {
         firstNumb = parseFloat(value);
         operator = undefined;
     }
-});
+}
 
-clear.addEventListener('click', (e) => {
+
+function clearFnc() {
     firstNumb = undefined;
     secundNumb = undefined;
     value = '';
     operator = undefined;
     updateDisplay();
-});
+}
 
+
+
+function floatFnc() { 
+    if (value.includes('.')) {
+        return;
+    }
+    value = value + '.';
+    updateDisplay(); 
+}
+
+
+function deleteFnc () {
+    value = value.slice(0,-1);
+    updateDisplay();
+}
+
+equal.addEventListener('click', () => equalFnc());
+clear.addEventListener('click', () => clearFnc() );
+float.addEventListener('click', () => floatFnc());
+deleteBtn.addEventListener('click', () => deleteFnc());
 change.addEventListener('click', () => {
     value = -value;
     updateDisplay();
-}); 
+});
 
-float.addEventListener('click', () => {
-    value = value + '.';
-    updateDisplay();
+// works with keyboard
+document.addEventListener ("keydown", (e) => {
+    if ((e.key >= 0) && (e.key <= 9)) {
+        value += e.key;
+        updateDisplay();
+    }
+    
+//need operators handling function for keyboard events 
+ 
+    function operatorsFnc () {
+        if((operator !== undefined) && (value == '')) {
+            operator = e.key;
+            return;
+        }
+    
+            if(operator !== undefined) {
+                secundNumb = parseFloat(value);
+                value = operate(firstNumb, secundNumb, operator);
+            updateDisplay();
+            firstNumb = value;
+            operator = e.key;
+            value = '';   
+        }    
+        else {
+            firstNumb = parseFloat(value);
+            operator = e.key;
+            value = '';
+        }
+    }
+    
+    switch (e.key) {
+        case '.':
+            floatFnc();
+            break;
+        case '+':
+        operatorsFnc();
+            break;
+        case '/':
+        operatorsFnc();
+        break;
+        case '*':
+            operatorsFnc();
+            break;
+            case '-':
+                operatorsFnc();
+                break;
+        case 'Enter':
+            equalFnc();
+            break
+        case 'Delete':
+            clearFnc();
+            break
+        case 'Backspace':
+            deleteFnc();
+            break;            
+        }
 })
-
-deleteBtn.addEventListener('click', () => {
-    value = value.slice(0,-1);
-    updateDisplay();
-})
+            
