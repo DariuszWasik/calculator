@@ -10,10 +10,9 @@ let numb = document.querySelectorAll('.numb');
 let buttons = document.querySelector("buttons");
 let operators = document.querySelectorAll(".operator");
 let change = document.querySelector("#change");
+let float = document.querySelector('#float')
 
 
-
-console.log(numb);
 function add (a, b) {
      return a + b;
  }
@@ -49,7 +48,7 @@ function add (a, b) {
  //click button puts given number on display
  numb.forEach((num) => {
     document.querySelector(`#${num.id}`).addEventListener("click", (f) => {
-        value += num.textContent
+        value += num.textContent;
         updateDisplay();
     })
 });
@@ -117,4 +116,8 @@ change.addEventListener('click', () => {
     updateDisplay();
 }); 
 
+float.addEventListener('click', () => {
+    value = value.slice(1) + '.';
+    updateDisplay();
+})
 
