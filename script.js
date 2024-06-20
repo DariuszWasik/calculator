@@ -124,4 +124,7 @@ float.addEventListener('click', () => {
     updateDisplay();
 })
 
-
+deleteBtn.addEventListener('click', () => {
+    value = value.slice(0,-1);
+    updateDisplay();
+})
