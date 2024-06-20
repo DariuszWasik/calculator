@@ -59,7 +59,7 @@ function updateDisplay() {
     let stringValue = parseFloat(value).toString();
     let decimalIndex = stringValue.indexOf(".");
     let length = stringValue.slice(decimalIndex).length;
-    if(length > 9){
+    if(length > 6){
         paraLow.textContent = parseFloat(stringValue).toFixed(3);
     }
     else {
@@ -156,9 +156,10 @@ equal.addEventListener('click', (e) => {
 })
 
 clear.addEventListener('click', (e) => {
-    firstNumb = 0;
-    secundNumb = 0;
+    firstNumb = undefined;
+    secundNumb = undefined;
     value = 0;
+    operator = undefined;
     updateDisplay();
 
 })
