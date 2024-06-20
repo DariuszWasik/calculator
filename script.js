@@ -3,7 +3,7 @@ let secundNumb;
 let operator;
 let equal = document.querySelector('#equal')
 let paraLow = document.querySelector(".lowerDisplay");
-let value = 0;
+let value = ''
 let clear = document.querySelector('#clear');
 let deleteBtn = document.querySelector('#delete');
 let numb = document.querySelectorAll('.numb');
@@ -64,12 +64,12 @@ operators.forEach((op) => {
             updateDisplay();
             firstNumb = value;
             operator = op.innerHTML;
-            value = 0;   
+            value = '';   
         }    
         else {
             firstNumb = parseFloat(value);
             operator = op.innerHTML;
-            value = 0;
+            value = '';
         }
     })
 })
@@ -80,11 +80,14 @@ function updateDisplay() {
     let stringValue = parseFloat(value).toString();
     let decimalIndex = stringValue.indexOf(".");
     let length = stringValue.slice(decimalIndex).length;
+    if(stringValue[stringValue.length-1] == 0) stringValue.slice(0,-1);
     if(length > 6){
         paraLow.textContent = parseFloat(stringValue).toFixed(3);
     }
+    // else if((value[0] == 0) && !(value.includes('.')))
+    //     paraLow.textContent = value.slice(1);
     else {
-        paraLow.textContent = parseFloat(value);
+        paraLow.textContent = value;
     }}
     
 //other functions buttons
@@ -106,7 +109,7 @@ equal.addEventListener('click', (e) => {
 clear.addEventListener('click', (e) => {
     firstNumb = undefined;
     secundNumb = undefined;
-    value = 0;
+    value = '';
     operator = undefined;
     updateDisplay();
 });
@@ -117,7 +120,8 @@ change.addEventListener('click', () => {
 }); 
 
 float.addEventListener('click', () => {
-    value = value.slice(1) + '.';
+    value = value + '.';
     updateDisplay();
 })
+
 
