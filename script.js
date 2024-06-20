@@ -139,18 +139,32 @@ divideBtn.addEventListener("click", (e) => {
 });
 
 equal.addEventListener('click', (e) => {
+    if (operator !== undefined){
     secundNumb = parseFloat(value);
     value = operate(firstNumb, secundNumb, operator);
     updateDisplay();
     firstNumb = parseFloat(value);
+    operator = undefined;
+    }
+    else {
+        firstNumb = parseFloat(value);
+        operator = undefined;
+    }
+    
+
     
 })
 
 clear.addEventListener('click', (e) => {
     firstNumb = 0;
     secundNumb = 0;
-    operator = undefined;
     value = 0;
     updateDisplay();
 
 })
+
+
+
+
+
+
