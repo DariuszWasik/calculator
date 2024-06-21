@@ -121,7 +121,7 @@ function updateUpperDisplay () {
     if(stringValue[stringValue.length-1] == 0) stringValue.slice(0,-1);
     if(length > 6){
         let cutedOperator = upperText.slice(-2,-1);
-        upperText = `${parseFloat(stringValue).toFixed(3).slice(0, length+3)} ${cutedOperator}`;
+        upperText = `${parseFloat(stringValue).toFixed(3).slice(0, length+3)} ${cutedOperator} `;
         console.log(upperText);
         // upperDisplay.textContent = parseFloat(stringValue).toFixed(3);
     }
@@ -176,6 +176,8 @@ function floatFnc() {
 function deleteFnc () {
     value = value.slice(0,-1);
     updateDisplay();
+    upperText = upperText.slice(0,-1);
+    updateUpperDisplay();
 }
 
 equal.addEventListener('click', () => equalFnc());
@@ -185,6 +187,21 @@ deleteBtn.addEventListener('click', () => deleteFnc());
 change.addEventListener('click', () => {
     value = -value;
     updateDisplay();
+    if(upperText.includes(operator)){
+        let placeOperator = upperText.indexOf(operator);
+        upperText = upperText.substring(0, placeOperator+2) + '-' + upperText.substring(placeOperator + 2)
+    }   
+//     if(upperText[placeOperator+2]=='-'){
+//         upperText = upperText.slice(0, placeOperator+1) + upperText.slice(placeOperator)
+// }
+    // if(upperText.includes(operator) && upperText.includes('-') ){
+    //     let placeOperator = upperText.indexOf(operator);
+    //     upperText = upperText.substring(0, placeOperator+2) + upperText.substring(placeOperator + 3)
+            
+    // }
+    else 
+    upperText = -upperText;
+    updateUpperDisplay();
 });
 
 // works with keyboard
@@ -192,6 +209,10 @@ document.addEventListener ("keydown", (e) => {
     if ((e.key >= 0) && (e.key <= 9)) {
         value += e.key;
         updateDisplay();
+        if(upperText !== undefined){
+            upperText += e.key;
+            updateUpperDisplay(); 
+        }
     }
     
 //need operators handling function for keyboard events 
@@ -199,6 +220,8 @@ document.addEventListener ("keydown", (e) => {
     function operatorsFnc () {
         if((operator !== undefined) && (value == '')) {
             operator = e.key;
+            upperText = upperText.slice(0,-2) + ' ' + operator + ' ';
+            updateUpperDisplay();
             return;
         }
     
@@ -208,11 +231,16 @@ document.addEventListener ("keydown", (e) => {
             updateDisplay();
             firstNumb = value;
             operator = e.key;
+            upperText = value + ' ' + operator + ' ';
+            console.log('current value decimal', upperText)  
+            updateUpperDisplay();
             value = '';   
         }    
         else {
             firstNumb = parseFloat(value);
             operator = e.key;
+            upperText = `${value} ${operator} `
+            updateUpperDisplay();
             value = '';
         }
     }
