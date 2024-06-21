@@ -72,7 +72,6 @@ operators.forEach((op) => {
             operator = op.innerHTML;
             upperText = upperText.slice(0,-2) + ' ' + operator + ' ';
             updateUpperDisplay();
-            console.log(upperText)            
             return;
         }
             
@@ -83,7 +82,6 @@ operators.forEach((op) => {
             firstNumb = value;
             operator = op.innerHTML;
             upperText = value + ' ' + operator + ' ';
-            console.log('current value decimal', upperText)
                      
             updateUpperDisplay();
             value = '';   
@@ -122,8 +120,6 @@ function updateUpperDisplay () {
     if(length > 6){
         let cutedOperator = upperText.slice(-2,-1);
         upperText = `${parseFloat(stringValue).toFixed(3).slice(0, length+3)} ${cutedOperator} `;
-        console.log(upperText);
-        // upperDisplay.textContent = parseFloat(stringValue).toFixed(3);
     }
 
         upperDisplay.textContent = upperText;
@@ -187,6 +183,7 @@ deleteBtn.addEventListener('click', () => deleteFnc());
 change.addEventListener('click', () => {
     value = -value;
     updateDisplay();
+
     let placeOperator = upperText.indexOf(operator);
     if(upperText.includes(operator) & (upperText[placeOperator+2] !== '-')){
         upperText = upperText.substring(0, placeOperator+2) + '-' + upperText.substring(placeOperator + 2);
@@ -195,16 +192,7 @@ change.addEventListener('click', () => {
     }   
     if(upperText[placeOperator+2] == '-') {
         upperText = upperText.substring(0, placeOperator+1) + ' ' + upperText.substring(placeOperator + 3);
-        console.log('soema heniu')
     }
-//     if(upperText[placeOperator+2]=='-'){
-//         upperText = upperText.slice(0, placeOperator+1) + upperText.slice(placeOperator)
-// }
-    // if(upperText.includes(operator) && upperText.includes('-') ){
-    //     let placeOperator = upperText.indexOf(operator);
-    //     upperText = upperText.substring(0, placeOperator+2) + upperText.substring(placeOperator + 3)
-            
-    // }
     else 
     upperText = -upperText;
     updateUpperDisplay();
@@ -238,7 +226,6 @@ document.addEventListener ("keydown", (e) => {
             firstNumb = value;
             operator = e.key;
             upperText = value + ' ' + operator + ' ';
-            console.log('current value decimal', upperText)  
             updateUpperDisplay();
             value = '';   
         }    

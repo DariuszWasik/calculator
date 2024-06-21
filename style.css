@@ -29,7 +29,7 @@ body {
 .display {
     border: 2px solid black;
     margin-top: 10px;
-    height: 100px;
+    height: 90px;
     width: 230px;
     background-color: rgb(238, 236, 236);
     margin-bottom: 10px;
@@ -37,7 +37,23 @@ body {
     border-radius: 10px;
     text-align: end;
     font-size: larger;
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow: hidden;
+}
+
+.lowerDisplay {
+    /* border: 1px solid black; */
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+.upperDisplay {
+    /* border: 1px solid black; */
+    margin-bottom: 0;
+    margin-top: 10px;
 }
 
 .buttons {
@@ -45,9 +61,11 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 10px;
+    button:hover{background-color:rgba(255, 166, 0, 0.213);};
+    
 }
     
-    button {
+button {
         /* margin: 10px; */
         height: 50px;
         width: 50px;
@@ -55,7 +73,7 @@ body {
         border-radius: 10px;
         background-color: rgb(145, 127, 163);
         font-weight:550;
-}
+    }
 
 
 #zero {
