@@ -187,10 +187,16 @@ deleteBtn.addEventListener('click', () => deleteFnc());
 change.addEventListener('click', () => {
     value = -value;
     updateDisplay();
-    if(upperText.includes(operator)){
-        let placeOperator = upperText.indexOf(operator);
-        upperText = upperText.substring(0, placeOperator+2) + '-' + upperText.substring(placeOperator + 2)
+    let placeOperator = upperText.indexOf(operator);
+    if(upperText.includes(operator) & (upperText[placeOperator+2] !== '-')){
+        upperText = upperText.substring(0, placeOperator+2) + '-' + upperText.substring(placeOperator + 2);
+        updateUpperDisplay()
+        return;
     }   
+    if(upperText[placeOperator+2] == '-') {
+        upperText = upperText.substring(0, placeOperator+1) + ' ' + upperText.substring(placeOperator + 3);
+        console.log('soema heniu')
+    }
 //     if(upperText[placeOperator+2]=='-'){
 //         upperText = upperText.slice(0, placeOperator+1) + upperText.slice(placeOperator)
 // }
