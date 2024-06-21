@@ -10,7 +10,10 @@ let numb = document.querySelectorAll('.numb');
 let buttons = document.querySelector("buttons");
 let operators = document.querySelectorAll(".operator");
 let change = document.querySelector("#change");
-let float = document.querySelector('#float')
+let float = document.querySelector('#float');
+let upperDisplay = document.querySelector('.upperDisplay');
+let upperText ='';
+
 
 
 function add (a, b) {
@@ -34,7 +37,7 @@ function operate(firstNumb, secundNumb, operator) {
     case '-' :
         return subtract(firstNumb, secundNumb);
         break;
-    case '*' :
+    case 'x' :
         return multiply(firstNumb, secundNumb);
         break;
     case '/' :
@@ -50,6 +53,10 @@ function operate(firstNumb, secundNumb, operator) {
  numb.forEach((num) => {
     document.querySelector(`#${num.id}`).addEventListener("click", (f) => {
         value += num.textContent;
+        if(upperText !== undefined){
+            upperText += num.textContent;
+            updateUpperDisplay(); 
+        }
         updateDisplay();
     })
 });
@@ -63,27 +70,38 @@ operators.forEach((op) => {
     document.querySelector(`#${op.id}`).addEventListener("click", (f) => {
         if((operator !== undefined) && (value == '')) {
             operator = op.innerHTML;
+            upperText = upperText.slice(0,-2) + ' ' + operator + ' ';
+            updateUpperDisplay();
+            console.log(upperText)            
             return;
         }
             
-            if(operator !== undefined) {
-                secundNumb = parseFloat(value);
-                value = operate(firstNumb, secundNumb, operator);
+        if(operator !== undefined) {
+            secundNumb = parseFloat(value);
+            value = operate(firstNumb, secundNumb, operator);
             updateDisplay();
             firstNumb = value;
             operator = op.innerHTML;
+            upperText = value + ' ' + operator + ' ';
+            console.log('current value decimal', upperText)
+                     
+            updateUpperDisplay();
             value = '';   
         }    
         else {
             firstNumb = parseFloat(value);
             operator = op.innerHTML;
+            upperText = `${value} ${operator} `
+            updateUpperDisplay();
             value = '';
+            
         }
     })
 })
 
 
 function updateDisplay() {
+    
     let stringValue = parseFloat(value).toString();
     let decimalIndex = stringValue.indexOf(".");
     let length = stringValue.slice(decimalIndex).length;
@@ -95,9 +113,23 @@ function updateDisplay() {
         paraLow.textContent = value;
     }
 }
-    
-    //other functions buttons
-    
+
+function updateUpperDisplay () {
+    let stringValue = parseFloat(upperText).toString();
+    let decimalIndex = stringValue.indexOf(".");
+    let length = stringValue.slice(decimalIndex).length;
+    if(stringValue[stringValue.length-1] == 0) stringValue.slice(0,-1);
+    if(length > 6){
+        let cutedOperator = upperText.slice(-2,-1);
+        upperText = `${parseFloat(stringValue).toFixed(3).slice(0, length+3)} ${cutedOperator}`;
+        console.log(upperText);
+        // upperDisplay.textContent = parseFloat(stringValue).toFixed(3);
+    }
+
+        upperDisplay.textContent = upperText;
+}
+//other functions buttons
+
 function equalFnc() {
     if((operator !== undefined) && (value == '')) {
         operator = "";
@@ -121,7 +153,11 @@ function clearFnc() {
     secundNumb = undefined;
     value = '';
     operator = undefined;
+    upperText = '';
+    upperDisplay.textContent = upperText
+
     updateDisplay();
+
 }
 
 
@@ -131,6 +167,8 @@ function floatFnc() {
         return;
     }
     value = value + '.';
+    upperText += '.';
+    upperDisplay.textContent = upperText
     updateDisplay(); 
 }
 
