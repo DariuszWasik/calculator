@@ -214,24 +214,28 @@ document.addEventListener ("keydown", (e) => {
     function operatorsFnc () {
         if((operator !== undefined) && (value == '')) {
             operator = e.key;
+            if(operator == '*'){ operator = 'x'}
             upperText = upperText.slice(0,-2) + ' ' + operator + ' ';
             updateUpperDisplay();
             return;
         }
     
-            if(operator !== undefined) {
+        if(operator !== undefined) {
                 secundNumb = parseFloat(value);
+                if(operator == '*'){ operator = 'x'}
                 value = operate(firstNumb, secundNumb, operator);
-            updateDisplay();
-            firstNumb = value;
-            operator = e.key;
-            upperText = value + ' ' + operator + ' ';
-            updateUpperDisplay();
-            value = '';   
-        }    
-        else {
-            firstNumb = parseFloat(value);
-            operator = e.key;
+                updateDisplay();
+                firstNumb = value;
+                operator = e.key;
+                if(operator = '*') operator = 'x'
+                upperText = value + ' ' + operator + ' ';
+                updateUpperDisplay();
+                value = '';   
+            }    
+            else {
+                firstNumb = parseFloat(value);
+                operator = e.key;
+                if(operator == '*'){ operator = 'x'}
             upperText = `${value} ${operator} `
             updateUpperDisplay();
             value = '';
