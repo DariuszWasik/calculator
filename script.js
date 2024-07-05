@@ -107,8 +107,8 @@ function updateDisplay() {
     if(length > 6){
         paraLow.textContent = parseFloat(stringValue).toFixed(3);
     }
-    if(stringValue.length > 12) {
-        paraLow.textContent = parseFloat(value).toExponential(4)
+    if(stringValue.length > 10) {
+        paraLow.textContent = parseFloat(value).toExponential(3)
     }
     else {
         paraLow.textContent = value;
